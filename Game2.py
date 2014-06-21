@@ -1,0 +1,53 @@
+import random
+
+class Unit:
+    HP = 100
+    STR = 10
+    LUCK = 5
+    DEF = 5
+    name = ""
+    def __init__(self, name):        
+        self.name = name
+    def status(self):
+        print("HP: %d, STR = %d, LUCK = %d, DEF = %d" % (self.HP, self.STR, self.LUCK, self.DEF))
+        
+class Battle:
+    
+    def attack(self,unit1,unit2):
+        if random.randomrange(0,99)<unit2.LUCK:
+            damage = unit1.STR-unit2.DEF
+            unit2.HP = unit2.HP - damage
+            if unit2.HP < 0 :
+                endGame(unit1)
+            else :
+                print("%s(은)는 %s의 공격에 성공하였다! %s는 피가 %d만큼 줄었다!" % (unit1.name, unit2.name, unit2.name, damage))
+        else:
+            print("%s (은)는 %s의 공격에 실패하였다!" % (unit1.name,unit2.name))
+        if random.randomrange(0,99)<unit1.LUCK :     
+            damage = unit2.STR-unit1.DEF
+            unti1.HP = unit1.HP - damage
+            if unit1.HP < 0 :
+                endGame(unit2)
+            else :
+                print("%s(은)는 %s의 공격에 성공하였다! %s는 피가 %d만큼 줄었다!" % (unit2.name, unit1.name, unit1.name, damage))
+        else:
+            print("%s (은)는 %s의 공격에 실패하였다!" % (unit2.name, unit1.name))
+            
+    def endGame(self,unit):
+        print("%s의 승리!" % unit.name)
+      
+            
+unit1 = input("이름을 입력해주세요")
+unit1 = Unit(unit1)
+print(unit1.status)
+unit2 = input("이름을 입력해주세요")
+unit2 = Unit(unit2)
+print(unit2.status)
+print("싸움을 시작하시겠습니까?")
+go = input("Y/N")
+if go == Y:
+    Battle(unit1,unit2)
+else if go == N:
+    pass
+else :
+    print("Y 나 N 을 입력주세요")
