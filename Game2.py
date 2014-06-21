@@ -39,15 +39,15 @@ class Battle:
             
 unit1 = input("이름을 입력해주세요")
 unit1 = Unit(unit1)
-print(unit1.status)
+print(unit1.status())
 unit2 = input("이름을 입력해주세요")
 unit2 = Unit(unit2)
-print(unit2.status)
+print(unit2.status())
 print("싸움을 시작하시겠습니까?")
 go = input("Y/N")
-if go == Y:
-    Battle(unit1,unit2)
-else if go == N:
+if go == 'Y':
+    Battle.attack(unit1,unit2)
+elif go == 'N':
     pass
 else :
     print("Y 나 N 을 입력주세요")
